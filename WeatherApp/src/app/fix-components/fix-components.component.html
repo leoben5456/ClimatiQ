@@ -1,0 +1,94 @@
+<div class="grid-container" [ngClass]="{'dark-mode': darkModeToggle}">
+    <div class="settings">
+       <!------------------------------Units card------------------------------>
+    <div class="card-header">Units</div>
+    <mat-card class="Units-card" >
+      <mat-card-content>
+        <div class="Units-card-Content">
+          <div *ngFor="let category of categories; trackBy: trackByFn">
+            <div><span>{{category.name}}</span></div>
+            <div style="width: 100%;">
+              <mat-button-toggle-group #toggleGroup="matButtonToggleGroup" name="fontStyle" aria-label="Font Style" style="width: 100%;" (change)="toggleChange(category.name, $event.value)">
+                <mat-button-toggle style="flex-grow: 1;" *ngFor="let unit of category.units; trackBy: trackByFn" [value]="unit" [checked]="preferences && preferences[category.name] === unit">{{unit}}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+
+    <div class="card-header">Notifications</div>
+    <mat-card class="Notifications-card">
+      <mat-card-content>
+        <div class="Notifications-card-Content">
+          <div class="Notifications">
+            <div class="head-title">Notifications</div>
+            <div><mat-slide-toggle [(ngModel)]="NotifacationToggle" (change)="toggleChanged($event,'Notifications')" color="primary"></mat-slide-toggle></div>
+          </div>
+          <div>
+           <span class="sub-title">Be aware of the weather</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="card-header">General</div>
+    <mat-card class="General-card">
+      <mat-card-content>
+        <div class="General-card-content">
+         <div>
+           <div class="head-title">12-Hour Time</div>
+           <div><mat-slide-toggle [(ngModel)]="hourTimeToggle" (change)="toggleChanged($event,'12-Hour Time')" color="primary"></mat-slide-toggle></div>
+         </div>
+         <mat-divider></mat-divider>
+         <div>
+          <div class="head-title">Location</div>
+          <div><mat-slide-toggle [(ngModel)]="locationToggle" (change)="toggleChanged($event,'Location')"  color="primary"></mat-slide-toggle></div>
+         </div>
+        </div>
+        <span class="sub-title">Get weather of your location</span>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="card-header">Themes</div>
+    <mat-card class="Notifications-card">
+      <mat-card-content>
+        <div class="Notifications-card-Content">
+          <div class="Notifications">
+            <div class="head-title">Dark Mode</div>
+            <div><mat-slide-toggle [(ngModel)]="darkModeToggle" (ngModelChange)="onDarkModeToggleChange($event)"   (change)="toggleChanged($event,'Dark mode')"   color="primary"></mat-slide-toggle></div>
+          </div>
+          <div>
+           <span class="sub-title">Enable dark mode for all pages</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <div class="card-header">Privacy</div>
+    <mat-card class="Notifications-card">
+      <mat-card-content>
+        <div class="Notifications-card-Content">
+          <div class="Notifications">
+            <div class="head-title">Personal Informations</div>
+            <a style="cursor: pointer;"><mat-icon (click)="openDialog()">edit</mat-icon></a>
+          </div>
+          <div>
+           <span class="sub-title">Change your Personal Informations.</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card [ngClass]="{'light-mode': !darkModeToggle}" >
+      <mat-card-content>
+        <div style="text-align: center;">
+          <button mat-flat-button color="primary" (click)="saveChanges()">Save Changes</button></div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+
+</div>
+

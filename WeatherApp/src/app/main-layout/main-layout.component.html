@@ -1,0 +1,41 @@
+<mat-drawer-container class="container" [ngClass]="{'dark-mode':isDarkMode}">
+  <mat-drawer [ngClass]="{'mobile': isHandset, 'laptop': !isHandset}"   class="side-bar" mode="side" opened="true">
+    <div class="Menu">
+      <div (click)="changeColor($event)" class="clicked"><a href="/"><i class="fa-solid fa-cloud-moon-rain"></i><h5>Weather</h5></a></div>
+      <div (click)="changeColor($event)"><a href="/Cities"><i class="fa-solid fa-bars"></i><h5>Cities</h5></a></div>
+      <div (click)="changeColor($event)"><a href="/Map"><i class="fa-solid fa-map"></i><h5>Map</h5></a></div>
+      <div (click)="changeColor($event)"><a href="/Settings"><i class="fa-solid fa-sliders"></i><h5>Settings</h5></a></div>
+      <p-confirmDialog [ngClass]="{'dark-mode':isDarkMode}" ></p-confirmDialog>
+      <div  (click)="confirm1($event)"  class="Logout-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+    </div>
+  </mat-drawer>
+  <mat-drawer #mobileSidenav mode="over" *ngIf="isHandset">
+    <div class="Menu">
+      <div (click)="changeColor($event)" class="clicked"><a href="/"><i class="fa-solid fa-cloud-moon-rain"></i><h5>Weather</h5></a></div>
+      <div (click)="changeColor($event)"><a href="/Cities"><i class="fa-solid fa-bars"></i><h5>Cities</h5></a></div>
+      <div (click)="changeColor($event)"><a href="/Map"><i class="fa-solid fa-map"></i><h5>Map</h5></a></div>
+      <div (click)="changeColor($event)"><a href="/Settings"><i class="fa-solid fa-sliders"></i><h5>Settings</h5></a></div>
+
+      <p-confirmDialog />
+      <div *ngIf="(isLoggedIn$ | async)" (onClick)="confirm1($event)" class="Logout-icon"title="Logout"aria-label="Logout"> <i class="fa-solid fa-right-from-bracket"></i></div></div>
+  </mat-drawer>
+  <mat-drawer-content class="content">
+    <div style="display: flex;">
+    <div *ngIf="currentRoute=='/'||currentRoute=='/Cities'||currentRoute=='/Map'" style="flex-grow: 1;" class="search-bar"><input type="text" placeholder="Search for cities" matInput [formControl]="cityControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onCitySelected($event)">
+        <mat-option *ngFor="let city of filteredCities" [value]="city.name">
+          {{ city.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <div>
+      <button mat-icon-button (click)="mobileSidenav.toggle()" *ngIf="isHandset">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    </div>
+    <router-outlet></router-outlet>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>

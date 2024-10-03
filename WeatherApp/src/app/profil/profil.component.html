@@ -1,0 +1,36 @@
+<div class="Container" [ngClass]="{'dark-mode':isDarkMode}" >
+  <h2>Personal Informations</h2>
+  <div>
+    <mat-form-field class="Input">
+      <input matInput placeholder="First Name" [(ngModel)]="firstName">
+    </mat-form-field>
+
+    <mat-form-field class="Input">
+      <input matInput placeholder="Last Name" [(ngModel)]="lastName">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="Input">
+      <input matInput placeholder="Username" [(ngModel)]="username">
+    </mat-form-field>
+
+    <mat-form-field class="Input">
+      <input matInput placeholder="Password" [(ngModel)]="password" type="password">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="Input">
+      <input matInput placeholder="Location" [(ngModel)]="location">
+    </mat-form-field>
+
+    <mat-form-field class="Input">
+      <input matInput placeholder="Email" [(ngModel)]="email" type="email">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex; justify-content: center;padding-top:10%;">
+    <button (click)="saveinfo()" mat-raised-button color="primary" class="button">Save</button>
+  </div>
+</div>

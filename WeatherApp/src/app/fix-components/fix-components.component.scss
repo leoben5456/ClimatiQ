@@ -1,0 +1,164 @@
+
+.grid-container {
+  margin-left:4%;
+  margin-top: 2%;
+
+}
+
+.settings{
+  flex: 1;
+}
+
+
+
+
+.card-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+
+}
+
+mat-card {
+  margin-bottom: 20px;
+  width:70%;
+  border-radius:10px;
+  background-color:#eaedee;
+}
+
+.Units-card{
+  height:60vh;
+}
+
+.Notifications-card{
+  height:11vh;
+}
+
+.General-card{
+  height:22vh;
+}
+
+@media screen and (max-width: 768px) {
+  mat-card {
+    width:80%;
+  }
+}
+
+
+.inline-elements {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px; 
+}
+
+.inline-elements span {
+  margin-bottom:10px;
+  margin-right: 10px; 
+}
+
+
+.Notifications{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.Notifications-card-Content div{
+  margin-bottom:3px;
+}
+
+.General-card-content{
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
+.General-card-content div{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+
+}
+
+.General-card-content > div > div {
+  margin-bottom:10px;
+}
+
+
+.head-title{
+  font-weight: bolder;
+}
+
+.sub-title{
+  color: gray;
+  font-size:15px;
+}
+
+
+.Units-card-Content{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.Units-card-Content div{
+  margin-bottom:8px;
+}
+
+.mat-button-toggle{
+  border-radius: 10px;
+  height: 30px;
+  margin-top:3px;
+  margin-left:5px;
+  margin-right:5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#eaedee;
+}
+
+
+
+
+.mat-button-toggle-group{
+  border-radius: 10px;
+  height:38px;
+  
+
+}
+
+
+.dark-mode {
+  background-color: #575757;
+  color: white;
+}
+
+.dark-mode-card {
+  background-color: #575757;
+}
+
+.light-mode {
+  background-color: #fafbfb;box-shadow: none !important;
+}
+
+.dark-mode mat-card {
+  background-color: #3f3f3f;
+  
+}
+
+.dark-mode mat-button-toggle{
+  background-color: #3f3f3f;
+  color: white;
+}
+
+
+.dark-mode .mat-button-toggle-checked {
+  background-color: #575757!important; 
+  color: white !important; 
+}
+
+.dark-mode, .light-mode, .dark-mode-card, mat-card, mat-button-toggle {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}

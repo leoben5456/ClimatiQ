@@ -1,0 +1,20 @@
+**Creating Weather Forecasting Application
+Weather Forecasting Application is a useful software engineering project that can help users stay informed about weather conditions in their area. The application is designed to help users plan their day and stay safe during severe weather conditions.
+
+!!/Tools
+
+-Python programming language for building the backend
+-ReactJS for the frontend
+-OpenWeatherMap API for weather data
+-Firebase database for storing user preferences
+
+
+!!/Functionalities
+-Secure user registration and login system
+-Real-time weather data updates for specified locations
+-Ability to view current weather conditions and forecasts for up to 7 days
+-Option to set location preferences and receive notifications for severe weather alerts
+-Customizable user interface with options to display temperature in Celsius or Fahrenheit, and switch between light and dark modes
+-Integration with social media platforms to share weather updates with friends and family
+-Analytics and reporting features to track user preferences and usage statistics
+-Mobile compatibility for convenient access to weather data on-the-go

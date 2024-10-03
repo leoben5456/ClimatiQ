@@ -1,0 +1,42 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+.container mat-card-content{
+  width: 400px;
+  height:70vh;
+
+}
+
+.example-full-width{
+  width:90%;
+  padding-left:5%;
+  padding-top:5%;
+
+}
+
+.submit_button{
+  margin-top:7%;
+}
+
+.submit_button button{
+  width:45%;
+}
+
+.Social-media img {
+  margin: 10px;
+}
+
+.Social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Social-media img:hover {
+  cursor: pointer;
+}

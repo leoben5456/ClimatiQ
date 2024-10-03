@@ -1,0 +1,43 @@
+<div class="grid-container" [ngClass]="{'dark-mode':isDarkMode}">
+  <div class="mat-grid-tile">
+    <ng-container *ngFor="let city of Cities">
+      <mat-card class="city-card" (click)="setSelectedCity(city)">
+        <mat-card-content>
+          <div class="city-details">
+          <div class="City">
+            <div><img src="assets/img/snow.png" alt=""></div>
+            <div style="padding-left:20px;"><h2>{{city}}</h2><span>10:25AM</span></div>
+          </div>
+          <div class="City-Temp">
+            31°
+          </div>
+        </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+  <div class="mat-grid-tile city-weather-details">
+    <div class="Current-Weather">
+    <div class="Current-Weather-Details"><h1 class="City-name">{{city}}</h1><span>Chance of rain:0%</span><h1>31°C</h1></div>
+      <div class="pic"><img src="assets/img/snow.png" alt=""></div>
+    </div>
+    <mat-divider style="width:96%;"></mat-divider>
+    <span>Today's Forecast</span>
+    <div class="Today-Forecast">
+      <div>6:00AM <br><img src="assets/img/snow.png" alt=""> <h5>25°C</h5></div>
+      <mat-divider [vertical]="true" style="height:90%;"></mat-divider>
+      <div>9:00AM<br><img src="assets/img/snow.png" alt=""> <h5>25°C</h5></div>
+      <mat-divider [vertical]="true" style="height:90%;"></mat-divider>
+      <div>12:00AM<br><img src="assets/img/snow.png" alt=""> <h5>25°C</h5></div>
+    </div>
+    <mat-divider style="width:96%;"></mat-divider>
+    <span>3-Day'sForecast</span>
+    <div class="days-Forecast">
+      <div>Today <br><img src="assets/img/snow.png" alt=""> <h5>25°C</h5></div>
+      <mat-divider [vertical]="true" style="height:90%;"></mat-divider>
+      <div>Tue<br><img src="assets/img/sun.png" alt=""> <h5>25°C</h5></div>
+      <mat-divider [vertical]="true" style="height:90%;"></mat-divider>
+      <div>Wed<br><img src="assets/img/rain.png" alt=""> <h5>25°C</h5></div>
+    </div>
+  </div>
+</div>

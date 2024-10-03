@@ -1,0 +1,114 @@
+
+<!-- <app-loading *ngIf="isLoading"></app-loading> -->
+<div  [ngClass]="{'dark-mode':isDarkMode}"  class="grid-container" *ngIf="weatherData">
+  <mat-grid-list  cols="3" rowHeight="300px">
+    <mat-grid-tile [colspan]="cols" [rowspan]=1>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title style="color: gray;">
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div class="weather-info">
+            <div class="city-temperature">
+              <h1 class="city-name">{{weatherData.name}}</h1>
+              <h1 class="temperature">{{ weatherData.main.temp | temperature: temperatureValue }}</h1>
+            </div>
+            <div class="weather-now-icon">
+              <img [src]="getWeatherIcon(weatherData.weather[0].main)" [alt]="weatherData.weather[0].main+ ' Image'">
+            </div>
+
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile  [colspan]="cols" [rowspan]=1>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title style="color: gray;">
+           Air conditions
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div class="air-info">
+            <div class="air-info-firstsection">
+              <div>
+                <i class="fa-solid fa-temperature-three-quarters"></i>
+                <h5>Real feel</h5>
+                <p>{{weatherData.main.feels_like|temperature:temperatureValue}}</p> <!-- Add the value for Real feel here -->
+              </div>
+              <div>
+                <i class="fa-solid fa-wind"></i>
+                <h5>Wind</h5>
+                <p> {{ weatherData.wind.speed | windSpeed: windSpeedValue }}</p>
+
+              </div>
+
+            </div>
+            <div class="air-info-secondsection">
+              <div>
+                <i class="fa-solid fa-droplet"></i>
+                <h5>Humidity</h5>
+                <p>{{weatherData.main.humidity|humidity:humidityValue}}</p>
+              </div>
+              <div>
+                <i class="fa-solid fa-water"></i>
+                <h5>Sea level</h5>
+                <p>{{weatherData.main.sea_level|seaLevel:seaLevelValue}}</p>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile [colspan]="cols" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title style="color: gray;">
+            7-Day Forecast
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div class="days-container">
+            <!-- Loop through the forecast data using *ngFor -->
+            <div class="day" *ngFor="let day of sevenDayForecast">
+              <h5>{{ day.day }}</h5>
+              <!-- Use getWeatherIcon method to dynamically display the weather icon -->
+              <img [src]="getWeatherIcon(day.weather)" [alt]="day.weather + ' Image'">
+              <!-- Display weather condition and temperature -->
+              <span class="status">{{ day.weather }}</span>
+              <span class="temperature">{{ day.temperature | temperature:temperatureValue }}</span>
+            </div>
+            
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile  [colspan]="colss" [rowspan]="row">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title style="color: gray;">
+          Today's Forecast
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div [ngClass]="{'vertical-container': !isheadset, 'days-container': isheadset}">
+            <!-- Loop through the first 6 time entries in weatherDataForecast -->
+            <div *ngFor="let day of weatherDataForecast" [ngClass]="{'day': isheadset}">
+              <h5>{{ day.time | time:is12Hour }}</h5>
+              <img class="current-weather" [src]="getWeatherIcon(day.weather)" [alt]="day.weather + ' Image'">
+              <h3>{{ day.temperature |temperature:temperatureValue  }}</h3>
+            </div>
+          </div>
+        </mat-card-content>
+        
+      </mat-card>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</div>

@@ -1,0 +1,29 @@
+.Container
+{
+  padding-left: 20px;
+  
+}
+
+
+
+.Input
+{
+  margin-left: 20px;
+  width: 45%;
+}
+
+
+.Input .mat-form-field
+{
+  width: 100%;
+}
+
+.button {
+  width: 200px; 
+}
+
+
+.dark-mode ::ng-deep .mat-mdc-dialog-surface {
+  background-color: #196eac !important; 
+  color: white !important; 
+}

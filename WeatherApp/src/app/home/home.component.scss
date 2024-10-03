@@ -1,0 +1,174 @@
+.grid-container {
+  margin-left:3%;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  right: 9px;
+  bottom: 9px;
+  background-color:#eaedee;
+
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+
+}
+.vertical-container {
+  display: flex;
+  flex-direction: row;
+  color: gray;
+  justify-content: space-around;
+
+}
+
+.vertical-container div {
+  margin-left:5%;
+  margin-right:0px;
+  border-right: 1px solid rgb(154, 153, 153);
+  padding-right: 10px;
+}
+
+/* Remove the border on the last div to avoid a line after the last item */
+.vertical-container div:last-child {
+  border-right: none;
+}
+
+.vertical-container img{
+  width:50px;
+}
+
+.days-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.day h5 {
+  flex-basis: 25%;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+.day img {
+  width: 40px;
+  height: 40px;
+  margin-right: 25px;
+  flex-basis: 25%;
+  object-fit: contain;
+}
+
+.day .status {
+  flex-basis: 25%;
+  text-align: left;
+  font-size: 14px;
+  color: #555;
+}
+
+.day .temperature {
+  flex-basis: 25%;
+  text-align: right;
+  font-size: 16px;
+  color: #333;
+}
+
+.days-container div:last-child {
+  border-bottom: none;
+}
+
+
+
+
+.weather-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+.weather-now-icon img
+{
+  width:200px;
+  height:200px ;
+}
+
+.weather-info .temperature{
+  margin-top:50px;
+  font-size:50px;
+}
+
+.air-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top:20px;
+}
+
+.air-info div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size:25px;
+  font-weight: bold;
+  margin-top:15px;
+  margin-right: 10px;
+}
+
+.air-info i {
+  margin-right: 8px;
+  color: gray;
+}
+
+.air-info h5 {
+  margin: 0;
+  font-size: 14px; 
+  color: gray;
+}
+
+
+
+.air-info-firstsection,
+.air-info-secondsection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+.air-info p {
+  margin: 0; 
+  font-size: 18px; 
+  color: black; 
+}
+
+
+.dark-mode mat-card{
+  background-color: #3f3f3f !important;
+  color: white !important;
+}
+
+.dark-mode mat-card-title,
+.dark-mode mat-card-content h5,
+.dark-mode mat-card-content p,
+.dark-mode mat-card-content h3,
+.dark-mode mat-card-content span{
+  color: #fff;
+}

@@ -1,0 +1,75 @@
+<!-- auth.component.html -->
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div style="text-align: center;">
+        <h2>Login</h2>
+      </div>
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="example-form"
+      >
+        <!-- Username field -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Username</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="username"
+            [errorStateMatcher]="matcher"
+            placeholder="Username"
+          />
+          <mat-error *ngIf="usernameFormControl.hasError('required')">
+            Username is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- Password field -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="password"
+            [errorStateMatcher]="matcher"
+            placeholder="Password"
+          />
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+            Password must be at least 6 characters long
+          </mat-error>
+        </mat-form-field>
+        <div class="submit_button" style="text-align: center;">
+          <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loading"
+        >
+          <span *ngIf="!loading">Login</span>
+          <span *ngIf="loading">Logging in...</span>
+        </button>
+        </div>
+      </form>
+      <div
+        style="display: flex; align-items: center; justify-content: center; padding-top: 5%;"
+      >
+        <mat-divider style="width: 40%;"></mat-divider>
+        <span style="margin: 0 10px;">OR</span>
+        <mat-divider style="width: 40%;"></mat-divider>
+      </div>
+      <div class="Social-media" style="text-align: center;">
+        <a href="http://localhost:8000/auth/login/google-oauth2/">
+          <img
+            src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+            alt="Google"
+            style="width: 53px;"
+          />
+        </a>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
