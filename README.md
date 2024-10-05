@@ -2,7 +2,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Technologies Used](#Technologies)
+- [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Screenshots](#Screenshots)
@@ -10,8 +10,10 @@
 
 
 
+
 ## Introduction
 Climatiq is a comprehensive weather forecasting web application that allows users to check real-time weather conditions, view weather forecasts for multiple cities via a dashboard or interactive map, and receive daily weather updates via email. Users can sign up and authenticate using OAuth 2.0 or JWT. The application provides both metric and imperial units and comes with customizable user settings such as notifications, dark mode, and more.
+For a demo of the application, please check out this [YouTube video](https://youtu.be/k-FPgf-z250).
 
 
 

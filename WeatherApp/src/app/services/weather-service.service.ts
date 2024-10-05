@@ -59,6 +59,7 @@ export class WeatherServiceService {
       })
     );
   }
+  
 
   getCurrentWeather(city: string) {
     return this.http.get<any>(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`);
@@ -169,4 +170,29 @@ export class WeatherServiceService {
     const minutes = date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
   }
+
+
+
+  getThreeTimeForecast(lat: string, lon: string): Observable<any[]> {
+    return this.getForecastWeather(lat, lon).pipe(
+      map((response) => {
+        const forecastArray = response.list.slice(0, 3);  // Get only the first 3 forecast entries (3 hours)
+        return forecastArray.map((item: { dt: number; main: { temp: number; }; weather: { main: any; }[]; }) => ({
+          time: this.formatTime(item.dt),  // Convert UNIX time to readable time
+          temperature: Math.round(item.main.temp - 273.15),  // Convert Kelvin to Celsius
+          weather: item.weather[0].main
+        }));
+      })
+    );
+  }
+
+  getThreeDayForecast(lat: string, lon: string): Observable<any[]> {
+    return this.getForecastWeather(lat, lon).pipe(
+      map((response) => {
+        const dailyForecast = this.processWeatherData(response.list);  
+        return dailyForecast.slice(0, 3);  
+      })
+    );
+  }
+  
 }

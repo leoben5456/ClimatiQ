@@ -1,43 +1,106 @@
-<div class="grid-container" [ngClass]="{'dark-mode':isDarkMode}">
+<div class="grid-container" [ngClass]="{'dark-mode': isDarkMode}">
+  
+  <!-- Display the message if there are no cities -->
+  <div *ngIf="Cities.length === 0" class="no-cities-message">
+    <h2>You don't follow any city!</h2>
+  </div>
+
+  <!-- Display the cities if they are present -->
   <div class="mat-grid-tile">
     <ng-container *ngFor="let city of Cities">
       <mat-card class="city-card" (click)="setSelectedCity(city)">
         <mat-card-content>
           <div class="city-details">
-          <div class="City">
-            <div><img src="assets/img/snow.png" alt=""></div>
-            <div style="padding-left:20px;"><h2>{{city}}</h2><span>10:25AM</span></div>
+            <div class="City">
+              <div>
+                <!-- Dynamically load weather icon for the city, using safe navigation -->
+                <img [src]="getWeatherIcon(cityWeatherData[city]?.weather[0]?.main)" alt="Weather Icon">
+              </div>
+              <div style="padding-left:20px;">
+                <h2>{{ city }}</h2>
+                <!-- Display the current time for the city -->
+                <span>{{ getCityTime(city) }}</span>
+              </div>
+            </div>
+            <div class="City-Temp">
+              <!-- Display the city's temperature only if available -->
+              {{ cityWeatherData[city]?.main?.temp | temperature: temperatureValue }}°
+            </div>
           </div>
-          <div class="City-Temp">
-            31°
-          </div>
-        </div>
         </mat-card-content>
       </mat-card>
     </ng-container>
   </div>
-  <div class="mat-grid-tile city-weather-details">
+
+  <!-- Weather details -->
+  <div class="mat-grid-tile city-weather-details" *ngIf="city">
     <div class="Current-Weather">
-    <div class="Current-Weather-Details"><h1 class="City-name">{{city}}</h1><span>Chance of rain:0%</span><h1>31°C</h1></div>
-      <div class="pic"><img src="assets/img/snow.png" alt=""></div>
+      <div class="Current-Weather-Details">
+        <h1 class="City-name">{{ city }}</h1>
+        <!-- Safe navigation for feels like temperature -->
+        <span *ngIf="weatherData?.main?.feels_like">Feels like: {{ weatherData?.main?.feels_like | temperature: temperatureValue }}</span>
+        <!-- Safe navigation for current temperature -->
+        <h1 *ngIf="weatherData?.main?.temp">{{ weatherData?.main?.temp | temperature: temperatureValue }}</h1>
+      </div>
+      <div class="pic">
+        <!-- Safe navigation for weather icon in detailed view -->
+        <img [src]="getWeatherIcon(weatherData?.weather[0]?.main)" alt="Weather Icon">
+      </div>
     </div>
-    <mat-divider style="width:96%;"></mat-divider>
+  
+    <div class="custom-divider"></div>
+  
     <span>Today's Forecast</span>
-    <div class="Today-Forecast">
-      <div>6:00AM <br><img src="assets/img/snow.png" alt=""> <h5>25°C</h5></div>
-      <mat-divider [vertical]="true" style="height:90%;"></mat-divider>
-      <div>9:00AM<br><img src="assets/img/snow.png" alt=""> <h5>25°C</h5></div>
-      <mat-divider [vertical]="true" style="height:90%;"></mat-divider>
-      <div>12:00AM<br><img src="assets/img/snow.png" alt=""> <h5>25°C</h5></div>
+  
+    <div class="Today-Forecast forecast-grid">
+      <div class="forecast-item">
+        <div>{{ weatherDataForecast[0]?.time }} <br>
+          <img [src]="getWeatherIcon(weatherDataForecast[0]?.weather)" alt="Weather Icon">
+          <h5>{{ weatherDataForecast[0]?.temperature | temperature: temperatureValue }}</h5>
+        </div>
+      </div>
+      <div class="vertical-divider"></div>
+      <div class="forecast-item">
+        <div>{{ weatherDataForecast[1]?.time }} <br>
+          <img [src]="getWeatherIcon(weatherDataForecast[1]?.weather)" alt="Weather Icon">
+          <h5>{{ weatherDataForecast[1]?.temperature | temperature: temperatureValue }}</h5>
+        </div>
+      </div>
+      <div class="vertical-divider"></div>
+      <div class="forecast-item">
+        <div>{{ weatherDataForecast[2]?.time }} <br>
+          <img [src]="getWeatherIcon(weatherDataForecast[2]?.weather)" alt="Weather Icon">
+          <h5>{{ weatherDataForecast[2]?.temperature | temperature: temperatureValue }}</h5>
+        </div>
+      </div>
     </div>
-    <mat-divider style="width:96%;"></mat-divider>
-    <span>3-Day'sForecast</span>
-    <div class="days-Forecast">
-      <div>Today <br><img src="assets/img/snow.png" alt=""> <h5>25°C</h5></div>
-      <mat-divider [vertical]="true" style="height:90%;"></mat-divider>
-      <div>Tue<br><img src="assets/img/sun.png" alt=""> <h5>25°C</h5></div>
-      <mat-divider [vertical]="true" style="height:90%;"></mat-divider>
-      <div>Wed<br><img src="assets/img/rain.png" alt=""> <h5>25°C</h5></div>
+  
+    <div class="custom-divider"></div>
+  
+    <span>3-Day's Forecast</span>
+  
+    <div class="days-Forecast forecast-grid">
+      <div class="forecast-item">
+        <div>{{ threeDayForecast[0]?.day }} <br>
+          <img [src]="getWeatherIcon(threeDayForecast[0]?.weather)" alt="Weather Icon">
+          <h5>{{ threeDayForecast[0]?.temperature | temperature: temperatureValue }}</h5>
+        </div>
+      </div>
+      <div class="vertical-divider"></div>
+      <div class="forecast-item">
+        <div>{{ threeDayForecast[1]?.day }} <br>
+          <img [src]="getWeatherIcon(threeDayForecast[1]?.weather)" alt="Weather Icon">
+          <h5>{{ threeDayForecast[1]?.temperature | temperature: temperatureValue }}</h5>
+        </div>
+      </div>
+      <div class="vertical-divider"></div>
+      <div class="forecast-item">
+        <div>{{ threeDayForecast[2]?.day }} <br>
+          <img [src]="getWeatherIcon(threeDayForecast[2]?.weather)" alt="Weather Icon">
+          <h5>{{ threeDayForecast[2]?.temperature | temperature: temperatureValue }}</h5>
+        </div>
+      </div>
     </div>
   </div>
+  
 </div>

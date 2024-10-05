@@ -4,131 +4,164 @@
   display: grid;
   grid-template-columns: 2fr  1fr;
   grid-template-rows: minmax(88vh, auto);
-  gap:60px; 
-
+  gap:60px;
 }
 
 .mat-grid-tile {
   height: auto;
 }
 
-.Clicked-City{
+.Clicked-City {
   cursor: pointer;
 }
-.city-card{
+
+.city-card {
   height:18vh;
   margin-bottom:15px;
   border-radius:20px;
   background-color:#eaedee;
   cursor: pointer;
 }
-.City{
+
+.City {
   display: flex;
   flex-direction:row;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .City h2, span {
   margin-bottom:3px;
 }
-.City span{
+
+.City span {
   font-size:15px;
   color: gray;
 }
-.City-Temp{
+
+.City-Temp {
   font-size:30px;
   color: gray;
 }
-.City img{
+
+.City img {
   width:100px;
 }
-.city-details{
+
+.city-details {
   display: flex;
   flex-direction:row;
   justify-content: space-between;
-
 }
 
-.City-Temp{
+.City-Temp {
   padding-top:25px;
 }
 
-
-.city-weather-details{
+.city-weather-details {
   display: flex;
   flex-direction: column;
   margin-right:10px;
 }
 
-.city-weather-details .City-name{
+.city-weather-details .City-name {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bolder;
-
-
 }
-.city-weather-details .temp{
+
+.city-weather-details .temp {
   font-size: 25px;
 }
 
-.Current-Weather-Details h1,span{
+.Current-Weather-Details h1, span {
   margin-bottom:3px;
 }
-.Current-Weather-Details span{
+
+.Current-Weather-Details span {
   color: gray;
 }
-.city-weather-details .Current-Weather{
+
+.city-weather-details .Current-Weather {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-
 }
 
-
-.city-weather-details .pic img{
+.city-weather-details .pic img {
   width:120px;
 }
 
-.city-weather-details .Today-Forecast,.days-Forecast{
+.city-weather-details .Today-Forecast, .days-Forecast {
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
-
-
+  justify-content: space-between;
+  position: relative;
 }
-.city-weather-details .Today-Forecast img{
+
+.city-weather-details .Today-Forecast img, 
+.city-weather-details .days-Forecast img {
   width:80px;
 }
 
-.city-weather-details .days-Forecast img{
-  width:80px;
+.city-weather-details .Today-Forecast .forecast-item, 
+.city-weather-details .days-Forecast .forecast-item {
+  flex: 1;
+  text-align: center;
 }
 
-.city-weather-details span{
+.city-weather-details .Today-Forecast h5, 
+.city-weather-details .days-Forecast h5 {
+  margin-top: 5px;
+  font-size: 16px;
+}
 
-   padding-top:12px;
-   padding-bottom:12px;
+.city-weather-details .vertical-divider {
+  width: 1px;
+  background-color: #ddd;
+  margin: 0 10px;
+  height: 100%; /* Ensure the divider fills the full height of the forecast section */
+}
+
+.city-weather-details span {
+  padding-top:12px;
+  padding-bottom:12px;
   font-weight: bolder;
   font-size:16px;
 }
 
-@media screen and (max-width: 800px) {
-  .grid-container{
-    grid-template-columns:1fr;
-  }
-
+.custom-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  margin: 15px 0;
 }
 
+@media screen and (max-width: 800px) {
+  .grid-container {
+    grid-template-columns:1fr;
+  }
+}
 
 .dark-mode mat-card {
   background-color: #3f3f3f;
   color: white;
 }
 
-
 .dark-mode div,
-.dark-mode span{
+.dark-mode span {
   color: white;
 }
 
 .dark-mode mat-divider {
-  background-color: white; 
+  background-color: white;
 }
+
+.no-cities-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Center it vertically
+  text-align: center;
+  font-size: 1.8rem;
+  color: #555;
+}
+
